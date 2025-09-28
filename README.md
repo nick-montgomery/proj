@@ -1,13 +1,13 @@
 # Proj
 
-[![AUR](https://img.shields.io/aur/version/proj?color=orange)](https://aur.archlinux.org/packages/proj)
+[![AUR](https://img.shields.io/aur/version/projctl?color=orange)](https://aur.archlinux.org/packages/projctl)
 
 A lightweight bash script to manage project context across your terminal sessions. Quickly switch directories, run commands, edit files, browse git, or tail logs—all tied to a "current project" state file.
 
 ## Features
 
 - **Set/Clear Project**: Switch between projects with a single command; state persists in `~/.cache/current_project`.
-- **Contextual Commands**: `proj run`, `proj edit`, `proj git` automatically `cd` into the project dir.
+- **Contextual Commands**: `projctl run`, `projctl edit`, `projctl git` automatically `cd` into the project dir.
 - **Logs Viewer**: Tail or browse logs in `./logs/` using `lnav` (fallback to `tail -F`).
 - **Customizable**: Override editor (`EDITOR_CMD=vim`) or git UI (`GIT_UI_CMD=lazygit`).
 
@@ -18,13 +18,13 @@ No dependencies beyond bash; optional tools (nvim, lazygit, lnav) enhance UX.
 ### Arch Linux (AUR)
 Install via an AUR helper:
 ```bash
-yay -S proj  # Or paru, aurman, etc.
+yay -S projctl # Or paru, aurman, etc.
 ```
 Manual build:
 
 ```bash
-git clone https://aur.archlinux.org/proj.git
-cd proj
+git clone https://aur.archlinux.org/projctl.git
+cd projctl
 makepg -si
 ```
 ### Manual (Any Linux/macOS)
@@ -32,45 +32,45 @@ makepg -si
 1. Download the script:
 
 ```bash
-curl -L0 https://raw.githubusercontent.com/nick-montgomery/proj/main/proj
-chmod +x proj
-sudo mv proj /usr/local/bin # Or ~/bin/
+curl -L0 https://raw.githubusercontent.com/nick-montgomery/projctl/main/projctl
+chmod +x projctl
+sudo mv projctl /usr/local/bin # Or ~/bin/
 ```
 2. (Optional) Set up state dir: `mkdir -p ~/.cache`
 
 ### From Source
 
 ```bash
-git clone https://github.com/nick-montgomery/proj.git
-cd proj
+git clone https://github.com/nick-montgomery/projctl.git
+cd projctl
 sudo make install # TODO: Add makefile
 ```
 ## Usage
 
 ```bash
-proj set /path/to/project # Set current project (absolute/relative)
-proj path                 # Print current project path
-proj clear                # Clear the current project
-proj run <cmd...>         # Run command inside project
-proj edit                 # Open $EDITOR_CMD in project (default: nvim)
-proj git                  # Open $GIT_UI_CMD in project (default: lazygit)
-proj logs [path]          # View logs in ./logs/ (or given path; uses lnav or tail -F)
+projctl set /path/to/project # Set current project (absolute/relative)
+projctl path                 # Print current project path
+projctl clear                # Clear the current project
+projctl run <cmd...>         # Run command inside project
+projctl edit                 # Open $EDITOR_CMD in project (default: nvim)
+projctl git                  # Open $GIT_UI_CMD in project (default: lazygit)
+projctl logs [path]          # View logs in ./logs/ (or given path; uses lnav or tail -F)
 ```
 ## Examples:
 
 ```bash
 # Set a project and edit
-proj set ~/my-app
-proj edit # Opens nvim in ~/my-app
+projctl set ~/my-app
+projctl edit # Opens nvim in ~/my-app
 
 # Run a dev server
-proj run npm state
+projctl run npm state
 
 # View logs (create ./logs/ if needed)
 mkdir -p ~/my-app/logs
-proj logs # Tails all *.log files in /logs
+projctl logs # Tails all *.log files in /logs
 ```
-For full help: `proj --help` or `proj help`
+For full help: `projctl --help` or `projctl help`
 
 ## Configuration
 
@@ -88,7 +88,7 @@ The `logs` command expects a `./logs/` dir with `*.log` files. Example for a Nod
 ```bash
 mkdir -p logs
 pnpm run dev  2>&1 | tee logs/app.log
-proj logs # Now view with lnav/tail
+projctl logs # Now view with lnav/tail
 ```
 ## Contributing
 
