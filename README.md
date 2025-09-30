@@ -60,7 +60,7 @@ projctl git                       # opens git UI (default: lazygit)
 projctl logs                      # tails logs/*.log (uses lnav if available)
 
 # Servers (tmux integration)
-projctl server                    # create session or attach existing session
+projctl servers                    # create session or attach existing session
 projctl servers --refresh         # re-seed commands if session existing
 projctl servers --reset           # kill and recreate session
 projctl servers --kill            # kill session
