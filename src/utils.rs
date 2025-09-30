@@ -61,7 +61,7 @@ pub fn detect_dev_cmd(dir: &Path) -> String {
         }
     } else if dir.join("pyproject.toml").exists() || dir.join("requirements.txt").exists() {
         if which::which("uv").is_ok() {
-            "mkdir -p logs && uv run python -m app 2&>1 | tee logs/app.log".to_string()
+            "mkdir -p logs && uv run python -m app 2>&1 | tee logs/app.log".to_string()
         } else {
             "mkdir -p logs && python -m app 2>&1 | tee logs/app.log".to_string()
         }

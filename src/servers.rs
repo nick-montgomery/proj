@@ -122,7 +122,7 @@ fn seed_docker(tmux: &Tmux, proj_dir: &Path, panes: &[String]) -> Result<()> {
     }
 
     // panes[1] => Postgres logs (best-effort)
-    let pg_cmd = r#"docker ps --format '{{.Names}} | grep -Ei 'postgres|pg' | head -n1 | xargs -r docker logs -f || echo 'No postgers'"#;
+    let pg_cmd = r#"docker ps --format '{{.Names}} | grep -Ei 'postgres|pg' | head -n1 | xargs -r docker logs -f || echo 'No postgres'"#;
     send_to_target_sh(tmux, &panes[1], proj_dir, pg_cmd)?;
 
     // panes[3] => Redis logs (best-effort)

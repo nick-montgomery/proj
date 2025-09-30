@@ -84,7 +84,7 @@ pub fn setup_docker_layout(tmux: &Tmux, session: &str) -> Result<Vec<String>> {
     tmux.run(["split-window", "-h", "-t", &target])?;
     tmux.run(["split-window", "-v", "-t", &format!("{target}.0")])?;
     tmux.run(["split-window", "-v", "-t", &format!("{target}.1")])?;
-    let out = tmux.out(["list-panes", "-t", &target, "-F", "#{pane_index:#{pane_id"])?;
+    let out = tmux.out(["list-panes", "-t", &target, "-F", "#{pane_index:#{pane_id}"])?;
     let mut panes = vec!["".to_string(); 4];
     for line in out.lines() {
         if line

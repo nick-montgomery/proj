@@ -59,13 +59,13 @@ pub enum Commands {
     /// Setup/attach tmux servers session for current project
     Servers {
         /// Setup flag (creates/reseeds if needed)
-        #[arg(long, conflicts_with_all = ["reset, kill"])]
+        #[arg(long, conflicts_with_all = ["reset", "kill"])]
         refresh: bool,
 
-        #[arg(long, conflicts_with_all = ["refresh, kill"])]
+        #[arg(long, conflicts_with_all = ["refresh", "kill"])]
         reset: bool,
 
-        #[arg(long, conflicts_with_all = ["refresh, reset"])]
+        #[arg(long, conflicts_with_all = ["refresh", "reset"])]
         kill: bool,
     },
     /// Create a Postgres DB
